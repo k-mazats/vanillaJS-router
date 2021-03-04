@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			app.innerHTML = component;
 		} else {
 			window.history.pushState({}, "/vanillaJS-router/error", window.location.origin + "/vanillaJS-router/error");
-			windows.location.pathname = "/vanillaJS-router/error";
+			window.location.pathname = "/vanillaJS-router/error";
 			app.innerHTML = error;
 		}
 	}
