@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
-			let route = `vanillaJS-router${e.target.getAttribute("href")}`;
+			let route = `/vanillaJS-router${e.target.getAttribute("href")}`;
             onNavClick(route);
 		});
 	}
