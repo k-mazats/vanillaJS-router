@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		await loadAllPages();
 		app.innerHTML = home;
 		routes = {
-			"vanillaJS-router/": home,
-			"vanillaJS-router/index.html": home,
-			"vanillaJS-router/contact": contact,
-			"vanillaJS-router/about": about,
+			"/vanillaJS-router/": home,
+			"/vanillaJS-router/index.html": home,
+			"/vanillaJS-router/contact": contact,
+			"/vanillaJS-router/about": about,
 		};
 	};
     const onNavClick = (pathname) => {
