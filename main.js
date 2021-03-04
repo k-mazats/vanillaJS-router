@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	let home = "";
 	let about = "";
 	let contact = "";
-    let routes;
-    
+	let routes;
+
 	/**
 	 *
 	 * @param {String} page - Represents the page information that needs to be retrieved
@@ -26,11 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		home = await loadPage("components/home.html");
 		about = await loadPage("components/about.html");
 		contact = await loadPage("components/contact.html");
+		error = await loadPage("components/error.html");
 	};
 	/**
 	 * The Main Function is an async function that first loads All Page HTML to the variables
 	 * Once the variables are loaded with the contents, then they are assigned to the 'routes' variable
 	 */
+	const render = async (component) => {
+		await loadAllPages();
+		try {
+			app.innerHTML = component;
+		} catch (e) {
+			window.history.pushState({}, "/vanillaJS-router/error", window.location.origin + "/vanillaJS-router/error");
+			app.innerHTML = error;
+		}
+	}
+	
 	const main = async () => {
 		await loadAllPages();
 		routes = {
@@ -38,25 +49,26 @@ document.addEventListener("DOMContentLoaded", () => {
 			"/vanillaJS-router/index.html": home,
 			"/vanillaJS-router/contact": contact,
 			"/vanillaJS-router/about": about,
+			"/vanillaJS-router/error": error,
 		};
-		app.innerHTML = routes[window.location.pathname];
+		render(routes[window.location.pathname]);
 	};
-    const onNavClick = (pathname) => {
-			window.history.pushState({}, pathname, window.location.origin + pathname);
-			app.innerHTML = routes[pathname];
-		};
+	const onNavClick = (pathname) => {
+		window.history.pushState({}, pathname, window.location.origin + pathname);
+		render(routes[pathname]);
+	};
 
 	// Invoke the Main function
 	main();
-	
+
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
 			let route = `/vanillaJS-router${e.target.getAttribute("href")}`;
-            onNavClick(route);
+			onNavClick(route);
 		});
 	}
-    window.onpopstate = () => {
-			app.innerHTML = routes[window.location.pathname];
-		};
+	window.onpopstate = () => {
+		app.innerHTML = routes[window.location.pathname];
+	};
 });
