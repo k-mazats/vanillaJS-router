@@ -37,9 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if(component !== undefined) {
 			app.innerHTML = component;
 		} else {
-			window.history.pushState({}, "/vanillaJS-router/error", window.location.origin + "/vanillaJS-router/error");
-			window.location.pathname = "/vanillaJS-router/error";
-			app.innerHTML = error;
+			window.location.pathname = "/vanillaJS-router/error".
 		}
 	}
 
