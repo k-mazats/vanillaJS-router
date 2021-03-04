@@ -34,14 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	 */
 	const render = async (component) => {
 		await loadAllPages();
-		try {
+		if(component !== undefined) {
 			app.innerHTML = component;
-		} catch (e) {
+		} else {
 			window.history.pushState({}, "/vanillaJS-router/error", window.location.origin + "/vanillaJS-router/error");
+			windows.location.pathname = "/vanillaJS-router/error";
 			app.innerHTML = error;
 		}
 	}
-	
+
 	const main = async () => {
 		await loadAllPages();
 		routes = {
