@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if(component !== undefined) {
 			app.innerHTML = component;
 		} else {
-			window.location.pathname = "/vanillaJS-router/error".
+			window.location.pathname = "/vanillaJS-router/error";
 		}
 	}
 
