@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	 */
 	const main = async () => {
 		await loadAllPages();
-		app.innerHTML = home;
+		
 		routes = {
 			"/vanillaJS-router/": home,
 			"/vanillaJS-router/index.html": home,
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Invoke the Main function
 	main();
+	app.innerHTML = home;
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
