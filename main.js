@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	 */
 	const main = async () => {
 		await loadAllPages();
-		
 		routes = {
 			"/vanillaJS-router/": home,
 			"/vanillaJS-router/index.html": home,
 			"/vanillaJS-router/contact": contact,
 			"/vanillaJS-router/about": about,
 		};
+		app.innerHTML = routes[window.location.pathname];
 	};
     const onNavClick = (pathname) => {
 			window.history.pushState({}, pathname, window.location.origin + pathname);
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Invoke the Main function
 	main();
-	app.innerHTML = home;
+	
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
