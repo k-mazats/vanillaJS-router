@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	 * The Async function loads all HTML to the variables 'home', 'about' & 'contact'
 	 */
 	const loadAllPages = async () => {
-		home = await loadPage("home.html");
-		about = await loadPage("about.html");
-		contact = await loadPage("contact.html");
+		home = await loadPage("components/home.html");
+		about = await loadPage("components/about.html");
+		contact = await loadPage("components/contact.html");
 	};
 	/**
 	 * The Main Function is an async function that first loads All Page HTML to the variables
