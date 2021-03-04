@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	let about = "";
 	let contact = "";
     let routes;
-
+    
 	/**
 	 *
 	 * @param {String} page - Represents the page information that needs to be retrieved
@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		await loadAllPages();
 		app.innerHTML = home;
 		routes = {
-			"/": home,
-            "/index.html": home,
-			"/contact": contact,
-			"/about": about,
+			"vanillaJS-router/": home,
+			"vanillaJS-router/index.html": home,
+			"vanillaJS-router/contact": contact,
+			"vanillaJS-router/about": about,
 		};
 	};
     const onNavClick = (pathname) => {
