@@ -1,6 +1,6 @@
 # vanillaJS-router
 
-Router and Components classes for small projects, works with github-pages
+Router and Components classes for smalls SPA, works with github-pages
 
 Local branch is for local development server
 
