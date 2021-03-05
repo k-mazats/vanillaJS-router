@@ -10,6 +10,7 @@ export default class Router {
 		if (component !== undefined) {
 			app.innerHTML = component;
 		} else {
+			console.table(this.routes);
 			app.innerHTML = this.routes["/vanillaJS-router/error"];
 		}
 	};
