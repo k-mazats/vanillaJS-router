@@ -10,7 +10,7 @@ export default class Router {
 		if (component !== undefined) {
 			app.innerHTML = component;
 		} else {
-			app.innerHTML = this.routes["/error"];
+			app.innerHTML = this.routes["/vanillaJS-router/error"];
 		}
 	};
 	onNavClick = (pathname) => {
