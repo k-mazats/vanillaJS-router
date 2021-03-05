@@ -3,11 +3,11 @@ import about from "/components/about.js";
 import contact from "/components/contact.js";
 import error from "/components/error.js";
 document.addEventListener("DOMContentLoaded", () => {
-	const routerLinks = document.getElementsByClassName("router-link");
+	
 	const app = document.getElementById("app");
 	const routes = {
-		"/": home(),
-		"/index.html": home(),
+		"/": home.init(),
+		"/index.html": home.init(),
 		"/contact": contact(),
 		"/about": about(),
 		"/error": error(),
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 
 	render(routes[window.location.pathname]);
-
+const routerLinks = document.getElementsByClassName("router-link");
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
