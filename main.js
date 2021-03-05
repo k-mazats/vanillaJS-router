@@ -1,69 +1,37 @@
+import home from "/components/home.js";
+import about from "/components/about.js";
+import contact from "/components/contact.js";
+import error from "/components/error.js";
 document.addEventListener("DOMContentLoaded", () => {
-	let routerLinks = document.getElementsByClassName("router-link");
-	let app = document.getElementById("app");
-	//Declare the variables for home, about & contact html pages
-	let home = "";
-	let about = "";
-	let contact = "";
-	let routes;
-
-	/**
-	 *
-	 * @param {String} page - Represents the page information that needs to be retrieved
-	 * @returns {String} resHtml - The Page's HTML is returned from the async invocation
-	 */
-
-	const loadPage = async (page) => {
-		const response = await fetch(page);
-		const resHtml = await response.text();
-		return resHtml;
+	const routerLinks = document.getElementsByClassName("router-link");
+	const app = document.getElementById("app");
+	const routes = {
+		"/": home(),
+		"/index.html": home(),
+		"/contact": contact(),
+		"/about": about(),
+		"/error": error(),
 	};
 
-	/**
-	 * The Async function loads all HTML to the variables 'home', 'about' & 'contact'
-	 */
-	const loadAllPages = async () => {
-		home = await loadPage("components/home.html");
-		about = await loadPage("components/about.html");
-		contact = await loadPage("components/contact.html");
-		error = await loadPage("components/error.html");
-	};
-	/**
-	 * The Main Function is an async function that first loads All Page HTML to the variables
-	 * Once the variables are loaded with the contents, then they are assigned to the 'routes' variable
-	 */
-	const render = async (component) => {
-		await loadAllPages();
-		if(component !== undefined) {
+	const render = (component) => {
+		if (component !== undefined) {
 			app.innerHTML = component;
 		} else {
-			window.location.pathname = "/vanillaJS-router/error";
+			window.location.pathname = "/error";
 		}
-	}
-
-	const main = async () => {
-		await loadAllPages();
-		routes = {
-			"/vanillaJS-router/": home,
-			"/vanillaJS-router/index.html": home,
-			"/vanillaJS-router/contact": contact,
-			"/vanillaJS-router/about": about,
-			"/vanillaJS-router/error": error,
-		};
-		render(routes[window.location.pathname]);
 	};
+
 	const onNavClick = (pathname) => {
 		window.history.pushState({}, pathname, window.location.origin + pathname);
 		render(routes[pathname]);
 	};
 
-	// Invoke the Main function
-	main();
+	render(routes[window.location.pathname]);
 
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
-			let route = `/vanillaJS-router${e.target.getAttribute("href")}`;
+			let route = e.target.getAttribute("href");
 			onNavClick(route);
 		});
 	}
