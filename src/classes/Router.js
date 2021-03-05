@@ -26,7 +26,7 @@ export default class Router {
 			}
 		});
 		window.onpopstate = () => {
-			this.render(routes[window.location.pathname]);
+			this.render(this.routes[window.location.pathname]);
 		};
 	};
 }
