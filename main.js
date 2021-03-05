@@ -6,18 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
 	const routerLinks = document.getElementsByClassName("router-link");
 	const app = document.getElementById("app");
 	const routes = {
-		"/": home(),
-		"/index.html": home(),
-		"/contact": contact(),
-		"/about": about(),
-		"/error": error(),
+		"/vanillaJS-router/": home(),
+		"/vanillaJS-router/index.html": home(),
+		"/vanillaJS-router/contact": contact(),
+		"/vanillaJS-router/about": about(),
+		"/vanillaJS-router/error": error(),
 	};
 
 	const render = (component) => {
 		if (component !== undefined) {
 			app.innerHTML = component;
 		} else {
-			window.location.pathname = "/error";
+			window.location.pathname = "/vanillaJS-router/error";
 		}
 	};
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let routerLink of routerLinks) {
 		routerLink.addEventListener("click", (e) => {
 			e.preventDefault();
-			let route = e.target.getAttribute("href");
+			let route = `/vanillaJS-router${e.target.getAttribute("href")}`;
 			onNavClick(route);
 		});
 	}
