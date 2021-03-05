@@ -21,7 +21,7 @@ export default class Router {
 		document.addEventListener("click", (e) => {
 			if (e.target.classList.contains(this.selector)) {
 				e.preventDefault();
-				let route = e.target.getAttribute("href");
+				let route = `/vanillaJS-router${e.target.getAttribute("href")}`;
 				this.onNavClick(route);
 			}
 		});
